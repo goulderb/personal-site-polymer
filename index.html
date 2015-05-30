@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+    <title>Polymer Test Project</title>
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <link rel="import" href="bower_components/app-router/app-router.html">
+    <link rel="import" href="layouts/page-layout.html">
+  </head>
+  <body unresolved>
+    <app-router>
+      <app-route path="/" import="pages/home-page.html"></app-route>
+      <app-route path="/project/convmedia" import="pages/project-convmedia.html"></app-route>
+    </app-router>
+  </body>
+</html>
