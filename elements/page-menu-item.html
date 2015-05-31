@@ -26,13 +26,12 @@
     }
   </style>
   <template>
-    <a href="{{path}}">
-      <paper-item>
-        <iron-icon icon="{{icon}}">
-        </iron-icon>
-        <content></content>
-      </paper-item>
-    </a>
+    <paper-item>
+      <iron-icon icon="{{icon}}">
+      </iron-icon>
+
+      <content></content>
+    </paper-item>
   </template>
 </dom-module>
 
@@ -41,10 +40,6 @@
     is: 'page-menu-item',
     properties: {
       icon: {
-        type: String,
-        value: ''
-      },
-      path: {
         type: String,
         value: ''
       }

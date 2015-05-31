@@ -18,11 +18,16 @@
         </paper-toolbar>
 
         <paper-menu attr-for-selected="id" selected="{{selected}}">
-          <page-menu-item id="home" icon="home" path="#/">
+          <page-menu-item id="home" icon="home" path="/" on-tap="handleTap">
             Home
           </page-menu-item>
-          <page-menu-item id="project-convmedia" icon="theaters" path="#/project/convmedia">
+
+          <page-menu-item id="project-convmedia" icon="theaters" path="/project/convmedia" on-tap="handleTap">
             Convmedia
+          </page-menu-item>
+
+          <page-menu-item id="project-blackhole" icon="cloud" path="/project/blackhole" on-tap="handleTap">
+            Blackhole
           </page-menu-item>
         </paper-menu>
       </paper-header-panel>
@@ -36,7 +41,7 @@
         <paper-item>
           <content></content>
         </paper-item>
-      </papeer-header-panel>
+      </paper-header-panel>
     </paper-drawer-panel>
   </template>
 </dom-module>
@@ -52,6 +57,13 @@
       selected: {
         type: String,
         value: ''
+      }
+    },
+    handleTap: function(e) {
+      var path = e.currentTarget.attributes["path"].value;
+
+      if (path && typeof path === 'string' && path != '') {
+        document.querySelector('app-router').go(path);
       }
     }
   });
