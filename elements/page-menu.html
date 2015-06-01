@@ -1,2 +1,41 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="page-menu-item.html">
+
+<dom-module id="page-menu">
+  <template>
+    <paper-menu attr-for-selected="id" selected="[[selected]]">
+      <page-menu-item id="home" icon="home" path="/" on-tap="handleTap">
+        Home
+      </page-menu-item>
+
+      <page-menu-item id="project-blackhole" icon="cloud" path="/project/blackhole" on-tap="handleTap">
+        Blackhole
+      </page-menu-item>
+
+      <page-menu-item id="project-convmedia" icon="theaters" path="/project/convmedia" on-tap="handleTap">
+        Convmedia
+      </page-menu-item>
+    </paper-menu>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: 'page-menu',
+    properties: {
+      selected: {
+        type: String,
+        value: ''
+      }
+    },
+    handleTap: function(e) {
+      var path = e.currentTarget.attributes["path"].value;
+
+      if (path && typeof path === 'string' && path != '') {
+        document.querySelector('app-router').go(path);
+      }
+    }
+  });
+</script>

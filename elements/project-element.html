@@ -1,0 +1,131 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-item/paper-item-body.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/paper-styles/paper-styles.html">
+
+<dom-module id="project-element">
+  <style>
+    :host {
+      @apply(--layout-wrap);
+      @apply(--layout-left);
+      @apply(--paper-font-subhead);
+
+      padding-top: 13px;
+    }
+  </style>
+  <template>
+      <paper-item>
+        <paper-item-body twoline>
+          <div>Name</div>
+          <div secondary>[[project.name]]</div>
+        </paper-item-body>
+      </paper-item>
+      <br />
+      <paper-item>
+        <paper-item-body twoline>
+          <div>Version</div>
+          <div secondary>[[project.version]]</div>
+        </paper-item-body>
+      </paper-item>
+      <br />
+      <paper-item>
+        <paper-item-body twoline>
+          <div>Requirements</div>
+          <div secondary>
+            <template is="dom-repeat" items="[[project.requirements]]">
+              <span>[[item.name]]</span> (version: <span>[[item.version]]</span>)<br />
+            </template>
+          </div>
+        </paper-item-body>
+      </paper-item>
+      <br />
+      <paper-item>
+        <paper-item-body twoline>
+          <div>Description</div>
+          <div style="white-space: normal;" secondary>
+            <template is="dom-repeat" items="[[descriptionLines]]">
+              <span>{{item.line}}</span>
+              <template is="dom-if" if="[[item.isNotLastLine]]">
+                <br />
+                <br />
+              </template>
+            </template>
+          </div>
+        </paper-item-body>
+      </paper-item>
+      <br />
+      <paper-item>
+        <paper-item-body twoline>
+          <div>Features</div>
+          <div secondary>
+            <template is="dom-repeat" items="[[project.features]]">
+              - <span>[[item.description]]</span><br />
+            </template>
+          </div>
+        </paper-item-body>
+      </paper-item>
+      <br />
+      <paper-item>
+        <paper-item-body twoline>
+          <div>Git Repository</div>
+          <div secondary>
+            <a href="[[githubLink]]">[[githubLink]]</a>
+          </div>
+        </paper-item-body>
+      </paper-item>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: 'project-element',
+    properties: {
+      project: {
+        type: Object,
+        value: {
+          name: '',
+          version: '',
+          description: '',
+          githubRepository: '',
+          requirements: [
+            {
+              name: '',
+              version: ''
+            }
+          ],
+          features: [
+            {
+              description: ''
+            }
+          ]
+        }
+      },
+      descriptionLines: {
+        computed: 'splitDescription(project.description)'
+      },
+      githubLink: {
+        computed: 'getGithubLink(project.githubRepository)'
+      }
+    },
+    splitDescription: function(description) {
+      var avSplitDescription = description.split("\n");
+      var ivLastIndexOfSplitDescription = avSplitDescription.length - 1;
+      var avOutputDescription = [];
+
+      for (var i = 0; i < avSplitDescription.length; i++)
+      {
+        avOutputDescription.push({
+          line: avSplitDescription[i],
+          isNotLastLine: i != ivLastIndexOfSplitDescription
+        });
+      }
+
+      return avOutputDescription;
+    },
+    getGithubLink: function(githubRepository)
+    {
+      return "https://github.com/" + githubRepository;
+    }
+  });
+</script>
