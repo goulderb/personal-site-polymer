@@ -5,7 +5,7 @@
 
 <dom-module id="page-menu">
   <template>
-    <paper-menu attr-for-selected="id" selected="[[selected]]">
+    <paper-menu attr-for-selected="path" selected="[[selected]]">
       <page-menu-item id="home" icon="home" path="/" on-tap="handleTap">
         Home
       </page-menu-item>
@@ -23,18 +23,18 @@
 
 <script>
   Polymer({
-    is: 'page-menu',
+    is: "page-menu",
     properties: {
       selected: {
         type: String,
-        value: ''
+        value: "/"
       }
     },
     handleTap: function(e) {
       var path = e.currentTarget.attributes["path"].value;
 
-      if (path && typeof path === 'string' && path != '') {
-        document.querySelector('app-router').go(path);
+      if (path && typeof path === "string" && path != "") {
+        document.querySelector("app-router").go(path);
       }
     }
   });

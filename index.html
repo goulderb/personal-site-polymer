@@ -5,14 +5,9 @@
     <title>Brett A. Goulder</title>
     <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
     <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-    <link rel="import" href="bower_components/app-router/app-router.html">
-    <link rel="import" href="layouts/page-layout.html">
+    <link rel="import" href="layouts/site-layout.html">
   </head>
   <body unresolved>
-    <app-router mode="hash">
-      <app-route path="/" import="pages/home-page.html"></app-route>
-      <app-route path="/project/convmedia" import="pages/project-convmedia.html"></app-route>
-      <app-route path="/project/blackhole" import="pages/project-blackhole.html"></app-route>
-    </app-router>
+    <site-layout></site-layout>
   </body>
 </html>

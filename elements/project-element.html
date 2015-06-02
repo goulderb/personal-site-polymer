@@ -10,102 +10,142 @@
       @apply(--layout-wrap);
       @apply(--layout-left);
       @apply(--paper-font-subhead);
+    }
 
-      padding-top: 13px;
+    .description {
+      white-space: normal;
     }
   </style>
   <template>
-      <paper-item>
-        <paper-item-body twoline>
-          <div>Name</div>
-          <div secondary>[[project.name]]</div>
-        </paper-item-body>
-      </paper-item>
-      <br />
-      <paper-item>
-        <paper-item-body twoline>
-          <div>Version</div>
-          <div secondary>[[project.version]]</div>
-        </paper-item-body>
-      </paper-item>
-      <br />
-      <paper-item>
-        <paper-item-body twoline>
-          <div>Requirements</div>
-          <div secondary>
-            <template is="dom-repeat" items="[[project.requirements]]">
-              <span>[[item.name]]</span> (version: <span>[[item.version]]</span>)<br />
+    <paper-item>
+      <paper-item-body twoline>
+        <div>Name</div>
+        <div secondary>[[project.name]]</div>
+      </paper-item-body>
+    </paper-item>
+    <br />
+
+    <paper-item>
+      <paper-item-body twoline>
+        <div>Version</div>
+        <div secondary>[[project.version]]</div>
+      </paper-item-body>
+    </paper-item>
+    <br />
+
+    <paper-item>
+      <paper-item-body twoline>
+        <div>Requirements</div>
+        <div secondary>
+          <template is="dom-repeat" items="[[project.requirements]]">
+            <span>[[item.name]]</span> (version: <span>[[item.version]]</span>)<br />
+          </template>
+        </div>
+      </paper-item-body>
+    </paper-item>
+    <br />
+
+    <paper-item>
+      <paper-item-body twoline>
+        <div>Description</div>
+        <div class="description" secondary>
+          <template is="dom-repeat" items="[[descriptionLines]]">
+            <span>{{item.line}}</span>
+            <template is="dom-if" if="[[item.isNotLastLine]]">
+              <br />
+              <br />
             </template>
-          </div>
-        </paper-item-body>
-      </paper-item>
-      <br />
-      <paper-item>
-        <paper-item-body twoline>
-          <div>Description</div>
-          <div style="white-space: normal;" secondary>
-            <template is="dom-repeat" items="[[descriptionLines]]">
-              <span>{{item.line}}</span>
-              <template is="dom-if" if="[[item.isNotLastLine]]">
-                <br />
-                <br />
-              </template>
-            </template>
-          </div>
-        </paper-item-body>
-      </paper-item>
-      <br />
+          </template>
+        </div>
+      </paper-item-body>
+    </paper-item>
+    <br />
+
+    <template is="dom-if" if="[[renderFeatures]]">
       <paper-item>
         <paper-item-body twoline>
           <div>Features</div>
           <div secondary>
             <template is="dom-repeat" items="[[project.features]]">
-              - <span>[[item.description]]</span><br />
+              <span style="padding-left: 16px;">[[item.description]]</span><br />
             </template>
           </div>
         </paper-item-body>
       </paper-item>
       <br />
+    </template>
+
+    <template is="dom-if" if="[[renderPrograms]]">
       <paper-item>
         <paper-item-body twoline>
-          <div>Git Repository</div>
+          <div>Programs</div>
           <div secondary>
-            <a href="[[githubLink]]">[[githubLink]]</a>
+            <template is="dom-repeat" items="[[project.programs]]">
+              <paper-item>
+                <paper-item-body twoline>
+                  <div style="font-weight: bold;">[[item.name]]</div>
+                  <div class="description" secondary>[[item.description]]</div>
+                </paper-item-body>
+              </paper-item>
+            </template>
           </div>
         </paper-item-body>
       </paper-item>
+      <br />
+    </template>
+
+    <paper-item>
+      <paper-item-body twoline>
+        <div>Git Repository</div>
+        <div secondary>
+          <a href="[[githubLink]]">[[githubLink]]</a>
+        </div>
+      </paper-item-body>
+    </paper-item>
   </template>
 </dom-module>
 
 <script>
   Polymer({
-    is: 'project-element',
+    is: "project-element",
     properties: {
       project: {
         type: Object,
         value: {
-          name: '',
-          version: '',
-          description: '',
-          githubRepository: '',
+          name: "",
+          version: "",
+          description: "",
+          githubRepository: "",
           requirements: [
             {
-              name: '',
-              version: ''
+              name: "",
+              version: ""
             }
           ],
           features: [
             {
-              description: ''
+              description: ""
+            }
+          ],
+          programs: [
+            {
+              name: "",
+              description: ""
             }
           ]
         }
       },
       descriptionLines: {
-        computed: 'splitDescription(project.description)'
+        computed: "splitDescription(project.description)"
       },
       githubLink: {
-        computed: 'getGithubLink(project.githubRepository)'
+        computed: "getGithubLink(project.githubRepository)"
+      },
+      renderFeatures: {
+        computed: "shouldRenderListOfElements(project.features)"
+      },
+      renderPrograms: {
+        computed: "shouldRenderListOfElements(project.programs)"
       }
     },
     splitDescription: function(description) {
@@ -126,6 +166,10 @@
     getGithubLink: function(githubRepository)
     {
       return "https://github.com/" + githubRepository;
+    },
+    shouldRenderListOfElements: function(elements)
+    {
+      return elements.length != 0;
     }
   });
 </script>

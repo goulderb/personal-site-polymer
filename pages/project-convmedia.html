@@ -1,16 +1,70 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../layouts/page-layout.html">
+<link rel="import" href="../elements/project-element.html">
 
 <dom-module id="project-convmedia">
   <template>
-    <page-layout title="Convmedia" selected="project-convmedia">
-      This is a project page for convmedia.
-    </page-layout>
+    <div style="padding-top: 16px;">
+      <project-element project="[[project]]"></project-element>
+    </div>
   </template>
 </dom-module>
 
 <script>
   Polymer({
-    is: 'project-convmedia'
+    is: "project-convmedia",
+    properties:
+    {
+      project: {
+        type: Object,
+        readOnly: true,
+        value: {
+          name: "convmedia",
+          version: "GIT",
+          description: "The convmedia project is a collection of GNU BASH scripts which perform various media conversion related tasks, such as audio/video transcoding and audio metatagging.",
+          githubRepository: "goulderb/convmedia.git",
+          requirements: [
+            {
+              name: "bash",
+              version: "any"
+            },
+            {
+              name: "mplayer",
+              version: "any"
+            },
+            {
+              name: "mencoder",
+              version: "any"
+            }
+          ],
+          features: [],
+          programs: [
+            {
+              name: "bcddb",
+              description: "A CDDB client which can query, read, and parse CDDB entries. Requires wget."
+            },
+            {
+              name: "btagger",
+              description: "An audio metatagger that uses TagLib's tagreader and tagwriter commands. Requires taglib."
+            },
+            {
+             name: "burnaudiocd",
+             description: "Burns the input audio files to a CD, decoding any formats to PCM format in the process. Requires wodim."
+            },
+            {
+              name: "convaudio",
+              description: "A multi-threaded audio transcoding script. Requires taglib, vorbis-tools, neroAacEnc, flac, and lame. Optionally requires vorbisgain."
+            },
+            {
+              name: 'convvideo',
+              description: 'A video transcoder that supports H264 (x264) and MPEG-4 (ffmpeg) for video, and Matroska and MPEG-4 for container formats. Requires mkvmerge and gpac.'
+            },
+            {
+              name: 'convcd',
+              description: 'A simplistic CD ripper that can do repeated ripping to try to account for drive read errors. Requires cdparanoia.'
+            }
+          ]
+        }
+      }
+    }
   });
 </script>

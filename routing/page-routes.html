@@ -1,0 +1,18 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-router/app-router.html">
+
+<dom-module id="page-routes">
+  <template>
+    <app-router mode="hash">
+      <app-route path="/" import="pages/home-page.html"></app-route>
+      <app-route path="/project/convmedia" import="pages/project-convmedia.html"></app-route>
+      <app-route path="/project/blackhole" import="pages/project-blackhole.html"></app-route>
+    </app-router>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: "page-routes"
+  });
+</script>

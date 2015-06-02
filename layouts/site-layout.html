@@ -4,29 +4,29 @@
 <link rel="import" href="../bower_components/paper-header-panel/paper-header-panel.html">
 <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../elements/page-menu.html">
 
-<dom-module id="page-layout">
+<link rel="import" href="../elements/page-menu.html">
+<link rel="import" href="../routing/page-routes.html">
+
+<dom-module id="site-layout">
   <template>
     <paper-drawer-panel>
       <paper-header-panel drawer>
         <paper-toolbar>
-          <div id="site-title">Brett A. Goulder</div>
+          <div>Site Menu</div>
         </paper-toolbar>
 
-        <page-menu selected="[[selected]]">
+        <page-menu>
         </page-menu>
       </paper-header-panel>
 
       <paper-header-panel main>
         <paper-toolbar>
           <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-          <div>[[title]]</div>
+          <div>Brett A. Goulder: Programming Enthusiast</div>
         </paper-toolbar>
 
-        <paper-item>
-          <content></content>
-        </paper-item>
+        <page-routes></page-routes>
       </paper-header-panel>
     </paper-drawer-panel>
   </template>
@@ -34,15 +34,13 @@
 
 <script>
   Polymer({
-    is: 'page-layout',
-    properties: {
-      title: {
-        type: String,
-        value: 'No Title'
-      },
-      selected: {
-        type: String,
-        value: ''
+    is: "site-layout",
+    ready: function() {
+      var path = window.location.hash.replace("#", "");
+      var pageMenu = document.querySelector('page-menu');
+
+      if (path.length > 0) {
+        pageMenu.selected = window.location.hash.replace("#", "");
       }
     }
   });

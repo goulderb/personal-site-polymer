@@ -1,52 +1,55 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../layouts/page-layout.html">
 <link rel="import" href="../elements/project-element.html">
 
 <dom-module id="project-blackhole">
   <template>
-    <page-layout title="[[project.name]]" selected="project-blackhole">
+    <div style="padding-top: 16px;">
       <project-element project="[[project]]"></project-element>
-    </page-layout>
+    </div>
   </template>
 </dom-module>
 
 <script>
   Polymer({
-    is: 'project-blackhole',
+    is: "project-blackhole",
     properties:
     {
       project: {
         type: Object,
         readOnly: true,
         value: {
-          name: 'Blackhole',
-          version: 'GIT',
+          name: "Blackhole",
+          version: "GIT",
           description: "Blackhole is a framework for developing small modules of iptables rules, which allows for rapid development of an extensible firewall infrastructure.",
-          githubRepository: 'goulderb/blackhole.git',
+          githubRepository: "goulderb/blackhole.git",
           requirements: [
             {
-              name: 'bash',
-              version: 'any'
+              name: "bash",
+              version: "any"
             },
             {
-              name: 'iptables',
-              version: 'any'
+              name: "iptables",
+              version: "any"
             }
           ],
           features: [
             {
-              description: 'Modular architecture with dependency management'
+              description: "Modular architecture with dependency management"
             },
             {
-              description: 'Pre-built modules for port control, flood limiting, TCP state flag inspection, and more'
+              description: 'Stateful firewall using TCP state inspection'
             },
             {
-              description: 'Flexible configuration system'
+              description: "Pre-built modules for port control, flood limiting, and more"
             },
             {
-              description: 'Optional dropped packet logging'
+              description: "Flexible configuration system"
+            },
+            {
+              description: "Optional dropped packet logging"
             }
-          ]
+          ],
+          programs: []
         }
       }
     }
