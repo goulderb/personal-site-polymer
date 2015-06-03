@@ -67,7 +67,7 @@
           <div>Features</div>
           <div secondary>
             <template is="dom-repeat" items="[[project.features]]">
-              <span style="padding-left: 16px;">[[item.description]]</span><br />
+              <span>[[item.description]]</span><br />
             </template>
           </div>
         </paper-item-body>
@@ -81,7 +81,7 @@
           <div>Programs</div>
           <div secondary>
             <template is="dom-repeat" items="[[project.programs]]">
-              <paper-item>
+              <paper-item style="padding: 0">
                 <paper-item-body twoline>
                   <div style="font-weight: bold;">[[item.name]]</div>
                   <div class="description" secondary>[[item.description]]</div>
