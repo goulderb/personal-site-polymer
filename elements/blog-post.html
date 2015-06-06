@@ -12,11 +12,14 @@
       @apply(--paper-font-title);
     }
 
+    paper-material {
+      padding: 5px;
+      margin: 5px;
+    }
+
     .subHeader {
-      text-align: right;
       color: #757575;
       font-size: 9pt;
-      padding-right: 5px;
     }
 
     .post {
@@ -25,7 +28,7 @@
     }
   </style>
   <template>
-    <paper-material style="width: 99%;">
+    <paper-material>
       <div class="header">{{postTitle}}</div>
       <div class="subHeader">
         Posted by <span>{{postAuthor}}</span> on <span>{{getFormattedDate(postDate)}}</span>

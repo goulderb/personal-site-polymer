@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../bower_components/paper-item/paper-item-body.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../bower_components/paper-styles/paper-styles.html">
 
@@ -15,93 +16,100 @@
     .description {
       white-space: normal;
     }
+
+    paper-material {
+      margin: 5px;
+      padding: 5px;
+    }
   </style>
   <template>
-    <paper-item>
-      <paper-item-body twoline>
-        <div>Name</div>
-        <div secondary>[[project.name]]</div>
-      </paper-item-body>
-    </paper-item>
-    <br />
-
-    <paper-item>
-      <paper-item-body twoline>
-        <div>Version</div>
-        <div secondary>[[project.version]]</div>
-      </paper-item-body>
-    </paper-item>
-    <br />
-
-    <paper-item>
-      <paper-item-body twoline>
-        <div>Requirements</div>
-        <div secondary>
-          <template is="dom-repeat" items="[[project.requirements]]">
-            <span>[[item.name]]</span> (version: <span>[[item.version]]</span>)<br />
-          </template>
-        </div>
-      </paper-item-body>
-    </paper-item>
-    <br />
-
-    <paper-item>
-      <paper-item-body twoline>
-        <div>Description</div>
-        <div class="description" secondary>
-          <template is="dom-repeat" items="[[descriptionLines]]">
-            <span>{{item.line}}</span>
-            <template is="dom-if" if="[[item.isNotLastLine]]">
-              <br />
-              <br />
-            </template>
-          </template>
-        </div>
-      </paper-item-body>
-    </paper-item>
-    <br />
-
-    <template is="dom-if" if="[[renderFeatures]]">
+    <paper-material id="wrapper">
       <paper-item>
         <paper-item-body twoline>
-          <div>Features</div>
+          <div>Name</div>
+          <div secondary>[[project.name]]</div>
+        </paper-item-body>
+      </paper-item>
+      <br />
+
+      <paper-item>
+        <paper-item-body twoline>
+          <div>Version</div>
+          <div secondary>[[project.version]]</div>
+        </paper-item-body>
+      </paper-item>
+      <br />
+
+      <paper-item>
+        <paper-item-body twoline>
+          <div>Requirements</div>
           <div secondary>
-            <template is="dom-repeat" items="[[project.features]]">
-              <span>[[item.description]]</span><br />
+            <template is="dom-repeat" items="[[project.requirements]]">
+              <span>[[item.name]]</span> (version: <span>[[item.version]]</span>)<br />
             </template>
           </div>
         </paper-item-body>
       </paper-item>
       <br />
-    </template>
 
-    <template is="dom-if" if="[[renderPrograms]]">
       <paper-item>
         <paper-item-body twoline>
-          <div>Programs</div>
-          <div secondary>
-            <template is="dom-repeat" items="[[project.programs]]">
-              <paper-item style="padding: 0;">
-                <paper-item-body twoline>
-                  <div style="font-weight: bold;">[[item.name]]</div>
-                  <div class="description" secondary>[[item.description]]</div>
-                </paper-item-body>
-              </paper-item>
+          <div>Description</div>
+          <div class="description" secondary>
+            <template is="dom-repeat" items="[[descriptionLines]]">
+              <span>{{item.line}}</span>
+              <template is="dom-if" if="[[item.isNotLastLine]]">
+                <br />
+                <br />
+              </template>
             </template>
           </div>
         </paper-item-body>
       </paper-item>
       <br />
-    </template>
 
-    <paper-item>
-      <paper-item-body twoline>
-        <div>Git Repository</div>
-        <div secondary>
-          <a href="[[githubLink]]">[[githubLink]]</a>
-        </div>
-      </paper-item-body>
-    </paper-item>
+      <template is="dom-if" if="[[renderFeatures]]">
+        <paper-item>
+          <paper-item-body twoline>
+            <div>Features</div>
+            <div secondary>
+              <template is="dom-repeat" items="[[project.features]]">
+                <span>[[item.description]]</span><br />
+              </template>
+            </div>
+          </paper-item-body>
+        </paper-item>
+        <br />
+      </template>
+
+      <template is="dom-if" if="[[renderPrograms]]">
+        <paper-item>
+          <paper-item-body twoline>
+            <div>Programs</div>
+            <div secondary>
+              <template is="dom-repeat" items="[[project.programs]]">
+                <paper-item style="padding: 0;">
+                  <paper-item-body twoline>
+                    <div style="font-weight: bold;">[[item.name]]</div>
+                    <div class="description" secondary>[[item.description]]</div>
+                  </paper-item-body>
+                </paper-item>
+              </template>
+            </div>
+          </paper-item-body>
+        </paper-item>
+        <br />
+      </template>
+
+      <paper-item>
+        <paper-item-body twoline>
+          <div>Git Repository</div>
+          <div secondary>
+            <a href="[[githubLink]]">[[githubLink]]</a>
+          </div>
+        </paper-item-body>
+      </paper-item>
+    </paper-material>
   </template>
 </dom-module>
 
