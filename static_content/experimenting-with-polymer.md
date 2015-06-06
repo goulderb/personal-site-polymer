@@ -1,0 +1,1 @@
+I've been experimenting with Polymer lately in an attempt to find a more extensible and reusable way of writing web applications.

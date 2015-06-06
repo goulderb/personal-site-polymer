@@ -1,16 +1,35 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animatable.html">
+<link rel="import" href="../elements/blog-post.html">
+<link rel="import" href="../bower_components/marked-element/marked-element.html">
 
 <dom-module id="home-page">
+  <style>
+    .post {
+      padding-top: 16px;
+    }
+  </style>
   <template>
-    <paper-item>
-      This is a home page.
-    </paper-item>
+      <iron-ajax auto url="/static_content/posts.json" handle-as="json" last-response="{{data}}"></iron-ajax>
+
+      <template is="dom-repeat" items="[[data.posts]]">
+        <iron-ajax auto url="[[item.postMarkdown]]" handle-as="text" last-response="{{item.markdown}}"></iron-ajax>
+
+        <div class="post">
+          <blog-post post-title="[[item.postTitle]]" post-author="[[item.postAuthor]]" post-date="{{getDateFromString(item.postDate)}}">
+            <marked-element markdown="{{item.markdown}}"></marked-element>
+          </blog-post>
+        </div>
+      </template>
   </template>
 </dom-module>
 
 <script>
   Polymer({
-    is: "home-page"
+    is: "home-page",
+    getDateFromString: function(stringDate) {
+      return new Date(stringDate);
+    }
   });
 </script>

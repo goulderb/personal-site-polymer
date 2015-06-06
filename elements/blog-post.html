@@ -1,0 +1,61 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/paper-styles/paper-styles.html">
+
+<dom-module id="blog-post">
+  <style>
+    :host {
+      @apply(--paper-font-subhead);
+    }
+
+    .header {
+      @apply(--paper-font-title);
+    }
+
+    .subHeader {
+      text-align: right;
+      color: #757575;
+      font-size: 9pt;
+      padding-right: 5px;
+    }
+
+    .post {
+      color: #757575;
+      @apply(--paper-font-body1);
+    }
+  </style>
+  <template>
+    <paper-material style="width: 99%;">
+      <div class="header">{{postTitle}}</div>
+      <div class="subHeader">
+        Posted by <span>{{postAuthor}}</span> on <span>{{getFormattedDate(postDate)}}</span>
+      </div>
+      <span class="post">
+        <content></content>
+      </span>
+    </paper-material>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: 'blog-post',
+    properties: {
+      postTitle: {
+        type: String
+      },
+      postAuthor: {
+        type: String
+      },
+      postDate: {
+        type: Date
+      }
+    },
+    getFormattedDate: function(date) {
+      if (date.toLocaleDateString)
+      {
+        return date.toLocaleDateString();
+      }
+    }
+  });
+</script>
