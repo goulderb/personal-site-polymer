@@ -21,21 +21,14 @@
       font-style: inherit;
       text-decoration: inherit;
     }
-
-    a {
-      color: #000000;
-      text-decoration: none;
-    }
   </style>
   <template>
-    <a href="[[path]]">
-      <paper-item>
-        <iron-icon icon="{{icon}}">
-        </iron-icon>
+    <paper-item>
+      <iron-icon icon="{{icon}}">
+      </iron-icon>
 
-        <content></content>
-      </paper-item>
-    </a>
+      <content></content>
+    </paper-item>
   </template>
 </dom-module>
 
@@ -46,9 +39,6 @@
       icon: {
         type: String,
         value: ""
-      },
-      path: {
-        type: String
       }
     }
   });

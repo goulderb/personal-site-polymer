@@ -4,15 +4,25 @@
 <link rel="import" href="page-menu-item.html">
 
 <dom-module id="page-menu">
+  <style>
+    a {
+      color: #000000;
+      text-decoration: none;
+    }
+  </style>
   <template>
     <paper-menu id="menu" attr-for-selected="data-route" selected="[[route]]">
-      <page-menu-item id="home" icon="home" data-route="home" path="/">
-        Home
-      </page-menu-item>
+      <a href="/" data-route="home">
+        <page-menu-item icon="home">
+          Home
+        </page-menu-item>
+      </a>
 
-      <page-menu-item id="projects" icon="cloud" data-route="projects" path="/projects">
-        Projects
-      </page-menu-item>
+      <a href="/projects" data-route="projects">
+        <page-menu-item id="projects" icon="cloud" data-route="projects" path="/projects">
+          Projects
+        </page-menu-item>
+      </a>
     </paper-menu>
   </template>
 </dom-module>
