@@ -1,0 +1,34 @@
+{
+  "name": "Blackhole",
+  "version": "GIT",
+  "description": "Blackhole is a framework for developing small modules of iptables rules, which allows for rapid development of an extensible firewall infrastructure.",
+  "githubRepository": "goulderb/blackhole.git",
+  "requirements": [
+    {
+      "name": "bash",
+      "version": "any"
+    },
+    {
+      "name": "iptables",
+      "version": "any"
+    }
+  ],
+  "features": [
+    {
+      "description": "Modular architecture with dependency management"
+    },
+    {
+      "description": "Stateful firewall using TCP state inspection"
+    },
+    {
+      "description": "Pre-built modules for port control, flood limiting, and more"
+    },
+    {
+      "description": "Flexible configuration system"
+    },
+    {
+      "description": "Optional dropped packet logging"
+    }
+  ],
+  "programs": []
+}

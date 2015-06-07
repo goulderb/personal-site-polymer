@@ -1,0 +1,58 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/paper-styles/paper-styles.html">
+
+<dom-module id="project-card">
+  <style>
+    :host {
+      @apply(--paper-font-subhead);
+    }
+
+    .header {
+      @apply(--paper-font-title);
+    }
+
+    .description {
+      color: #757575;
+      @apply(--paper-font-body1);
+    }
+
+    a {
+      color: #000000;
+      text-decoration: none;
+    }
+  </style>
+  <template>
+    <a href="{{projectUrl}}">
+      <paper-material>
+        <div class="header">
+          <span>{{projectName}}</span>
+        </div>
+        <div class="description">
+          <span>{{projectDescription}}</span>
+        </div>
+      </paper-material>
+    </a>
+  </template>
+</dom-module>
+
+<script type="text/javascript">
+  Polymer({
+    is: 'project-card',
+    properties: {
+      projectName: {
+        type: String
+      },
+      projectDescription: {
+        type: String
+      },
+      projectUrl: {
+        type: String,
+        computed: 'getProjectUrl(projectName)'
+      }
+    },
+    getProjectUrl: function(projectName) {
+      return "/projects/" + projectName.toLowerCase();
+    }
+  });
+</script>
