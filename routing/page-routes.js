@@ -1,4 +1,4 @@
-(function(document) {
+(function() {
   var application = document.querySelector("#application");
 
   page('/', function () {
@@ -13,4 +13,4 @@
   page.start({
     hashbang: true
   });
-});
+})();
