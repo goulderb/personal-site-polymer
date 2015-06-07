@@ -7,13 +7,12 @@
     <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
     <script src="bower_components/page.js/page.js"></script>
     <link rel="import" href="layouts/site-layout.html">
+
+    <script src="routing/page-routes.js"></script>
   </head>
   <body unresolved>
     <template is="dom-bind" id="application">
-      <site-layout route="{{route}}" params="{{params}}"></site-layout>
+      <site-layout route="[[route]]" params="[[params]]"></site-layout>
     </template>
-
-    <script src="routing/page-routes.js">
-    </script>
   </body>
 </html>

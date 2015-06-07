@@ -1,13 +1,13 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="../elements/project-element.html">
+<link rel="import" href="../elements/project-card.html">
 
 <dom-module id="projects-page">
   <template>
-    <iron-ajax auto url="/static_content/projects.json" handle-as="json" last-response="{{projectData}}"></iron-ajax>
+    <iron-ajax auto url="/static_content/projects.json" handle-as="json" last-response="{{projectsData}}"></iron-ajax>
 
-    <template is="dom-repeat" items="[[projectData.projects]]">
-      <project-element project="[[item]]"></project-element>
+    <template is="dom-repeat" items="[[projectsData.projects]]">
+      <project-card project-name="[[item.name]]" project-description="[[item.description]]"></project-card>
     </template>
   </template>
 </dom-module>

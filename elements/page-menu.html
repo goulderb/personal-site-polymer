@@ -5,12 +5,12 @@
 
 <dom-module id="page-menu">
   <template>
-    <paper-menu id="menu" attr-for-selected="data-route" selected="{{route}}">
-      <page-menu-item id="home" icon="home" data-route="home" path="/" on-tap="handleTap">
+    <paper-menu id="menu" attr-for-selected="data-route" selected="[[route]]">
+      <page-menu-item id="home" icon="home" data-route="home" path="/">
         Home
       </page-menu-item>
 
-      <page-menu-item id="projects" icon="cloud" data-route="projects" path="/projects" on-tap="handleTap">
+      <page-menu-item id="projects" icon="cloud" data-route="projects" path="/projects">
         Projects
       </page-menu-item>
     </paper-menu>
@@ -23,13 +23,6 @@
     properties: {
       route: {
         type: String
-      }
-    },
-    handleTap: function(e) {
-      var path = e.currentTarget.attributes["path"].value;
-
-      if (path && typeof path === "string" && path != "") {
-        page(path);
       }
     }
   });

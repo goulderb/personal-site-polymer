@@ -2,84 +2,13 @@
   "projects": [
     {
       "name": "Blackhole",
-      "version": "GIT",
       "description": "Blackhole is a framework for developing small modules of iptables rules, which allows for rapid development of an extensible firewall infrastructure.",
-      "githubRepository": "goulderb/blackhole.git",
-      "requirements": [
-        {
-          "name": "bash",
-          "version": "any"
-        },
-        {
-          "name": "iptables",
-          "version": "any"
-        }
-      ],
-      "features": [
-        {
-          "description": "Modular architecture with dependency management"
-        },
-        {
-          "description": "Stateful firewall using TCP state inspection"
-        },
-        {
-          "description": "Pre-built modules for port control, flood limiting, and more"
-        },
-        {
-          "description": "Flexible configuration system"
-        },
-        {
-          "description": "Optional dropped packet logging"
-        }
-      ],
-      "programs": []
+      "jsonFile": "/static_content/blackhole.json"
     },
     {
       "name": "convmedia",
-      "version": "GIT",
-      "description": "The convmedia project is a collection of GNU BASH scripts which perform various media conversion related tasks, such as audio/video transcoding and audio metatagging.",
-      "githubRepository": "goulderb/convmedia.git",
-      "requirements": [
-        {
-          "name": "bash",
-          "version": "any"
-        },
-        {
-          "name": "mplayer",
-          "version": "any"
-        },
-        {
-          "name": "mencoder",
-          "version": "any"
-        }
-      ],
-      "features": [],
-      "programs": [
-        {
-          "name": "bcddb",
-          "description": "A CDDB client which can query, read, and parse CDDB entries. Requires wget."
-        },
-        {
-          "name": "btagger",
-          "description": "An audio metatagger that uses TagLib's tagreader and tagwriter commands. Requires taglib."
-        },
-        {
-          "name": "burnaudiocd",
-          "description": "Burns the input audio files to a CD, decoding any formats to PCM format in the process. Requires wodim."
-        },
-        {
-          "name": "convaudio",
-          "description": "A multi-threaded audio transcoding script. Requires taglib, vorbis-tools, neroAacEnc, flac, and lame. Optionally requires vorbisgain."
-        },
-        {
-          "name": "convvideo",
-          "description": "A video transcoder that supports H264 (x264) and MPEG-4 (ffmpeg) for video, and Matroska and MPEG-4 for container formats. Requires mkvmerge and gpac."
-        },
-        {
-          "name": "convcd",
-          "description": "A simplistic CD ripper that can do repeated ripping to try to account for drive read errors. Requires cdparanoia."
-        }
-      ]
+      "description": "convmedia is a collection of GNU BASH scripts which perform various media conversion related tasks, such as audio/video transcoding and audio metatagging.",
+      "jsonFile": "/static_content/convmedia.json"
     }
   ]
 }

@@ -3,12 +3,14 @@
 
 <link rel="import" href="../pages/home-page.html">
 <link rel="import" href="../pages/projects-page.html">
+<link rel="import" href="../pages/project-page.html">
 
 <dom-module id="page-route-selector">
   <template>
-    <iron-pages attr-for-selected="data-route" selected="{{route}}">
+    <iron-pages attr-for-selected="data-route" selected="[[route]]">
       <home-page data-route="home"></home-page>
       <projects-page data-route="projects"></projects-page>
+      <project-page data-route="project-info" params="[[params]]"></project-page>
     </iron-pages>
   </template>
 </dom-module>

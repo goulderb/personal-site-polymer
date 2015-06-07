@@ -5,8 +5,12 @@ window.addEventListener('WebComponentsReady', function() {
     application.route = "home";
   });
 
-  page('/projects', function (data) {
+  page('/projects', function () {
     application.route = "projects";
+  });
+
+  page('/projects/:name', function (data) {
+    application.route = "project-info";
     application.params = data.params;
   });
 
