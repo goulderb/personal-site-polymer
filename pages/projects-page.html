@@ -1,0 +1,19 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../elements/project-element.html">
+
+<dom-module id="project-page">
+  <template>
+    <iron-ajax auto url="/static_content/projects.json" handle-as="json" last-response="{{projectData}}"></iron-ajax>
+
+    <template is="dom-repeat" items="[[projectData.projects]]">
+      <project-element project="[[item]]"></project-element>
+    </template>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: "project-page"
+  });
+</script>

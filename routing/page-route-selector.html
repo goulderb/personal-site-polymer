@@ -1,0 +1,30 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+
+<link rel="import" href="../pages/home-page.html">
+<link rel="import" href="../pages/projects-page.html">
+
+<script src="../bower_components/page/page.js"></script>
+
+<dom-module id="page-route-selector">
+  <template>
+    <iron-pages attr-for-selected="data-route" selected="{{route}}">
+      <home-page data-route="home"></home-page>
+      <project-page data-route="projects"></project-page>
+    </iron-pages>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: "page-route-selector",
+    properties: {
+      route: {
+        type: String
+      },
+      params: {
+        type: Object
+      }
+    }
+  });
+</script>

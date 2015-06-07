@@ -5,17 +5,13 @@
 
 <dom-module id="page-menu">
   <template>
-    <paper-menu id="menu" attr-for-selected="path" selected="[[selected]]">
-      <page-menu-item id="home" icon="home" path="/" on-tap="handleTap">
+    <paper-menu id="menu" attr-for-selected="data-route" selected="{{route}}">
+      <page-menu-item id="home" icon="home" data-route="home" path="/" on-tap="handleTap">
         Home
       </page-menu-item>
 
-      <page-menu-item id="project-blackhole" icon="cloud" path="/project/blackhole" on-tap="handleTap">
-        Blackhole
-      </page-menu-item>
-
-      <page-menu-item id="project-convmedia" icon="theaters" path="/project/convmedia" on-tap="handleTap">
-        Convmedia
+      <page-menu-item id="projects" icon="cloud" data-route="projects" path="/projects" on-tap="handleTap">
+        Projects
       </page-menu-item>
     </paper-menu>
   </template>
@@ -25,16 +21,15 @@
   Polymer({
     is: "page-menu",
     properties: {
-      selected: {
-        type: String,
-        value: "/"
+      route: {
+        type: String
       }
     },
     handleTap: function(e) {
       var path = e.currentTarget.attributes["path"].value;
 
       if (path && typeof path === "string" && path != "") {
-        document.querySelector("app-router").go(path);
+        page(path);
       }
     }
   });

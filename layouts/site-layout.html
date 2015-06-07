@@ -6,7 +6,7 @@
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 
 <link rel="import" href="../elements/page-menu.html">
-<link rel="import" href="../routing/page-routes.html">
+<link rel="import" href="../routing/page-route-selector.html">
 
 <dom-module id="site-layout">
   <style>
@@ -21,7 +21,7 @@
           <div>Site Menu</div>
         </paper-toolbar>
 
-        <page-menu>
+        <page-menu id="page-menu" route="{{route}}">
         </page-menu>
       </paper-header-panel>
 
@@ -32,7 +32,7 @@
         </paper-toolbar>
 
         <div id="page">
-          <page-routes></page-routes>
+          <page-route-selector route="{{route}}" params="{{params}}"></page-route-selector>
         </div>
       </paper-header-panel>
     </paper-drawer-panel>
@@ -42,12 +42,12 @@
 <script>
   Polymer({
     is: "site-layout",
-    ready: function() {
-      var path = window.location.hash.replace("#", "");
-      var pageMenu = document.querySelector('page-menu');
-
-      if (path.length > 0) {
-        pageMenu.selected = window.location.hash.replace("#", "");
+    properties: {
+      route: {
+        type: String
+      },
+      params: {
+        type: Object
       }
     }
   });

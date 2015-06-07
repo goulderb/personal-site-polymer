@@ -8,6 +8,13 @@
     <link rel="import" href="layouts/site-layout.html">
   </head>
   <body unresolved>
-    <site-layout></site-layout>
+    <template is="dom-bind" id="application">
+      <site-layout route="{{route}}" params="{{params}}"></site-layout>
+    </template>
+
+    <!-- build:js routing/page-routes.js -->
+    <script src="routing/page-routes.js">
+    <!-- endbuild-->
+    </script>
   </body>
 </html>
