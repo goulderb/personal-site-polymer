@@ -11,7 +11,7 @@
     }
   </style>
   <template>
-    <paper-menu id="menu" attr-for-selected="data-route" selected="[[route]]">
+    <paper-menu id="menu" attr-for-selected="data-route" selected="[[route]]" on-iron-select="onMenuSelect">
       <a href="/" data-route="home">
         <page-menu-item icon="home">
           Home
@@ -33,6 +33,14 @@
     properties: {
       route: {
         type: String
+      }
+    },
+    onMenuSelect: function() {
+      var drawerPanel = document.querySelector("#drawerPanel");
+
+      if (drawerPanel && drawerPanel.narrow)
+      {
+        drawerPanel.closeDrawer();
       }
     }
   });
