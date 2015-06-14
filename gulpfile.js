@@ -20,6 +20,8 @@ var merge = require('merge-stream');
 var path = require('path');
 var fs = require('fs');
 var glob = require('glob');
+var polyclean = require('polyclean');
+var vinylPaths = require("vinyl-paths");
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -81,17 +83,13 @@ gulp.task('images', function () {
 
 // Copy All Files At The Root Level (app)
 gulp.task('copy', function () {
-  var app = gulp.src([
-    'app/*'
-  ], {
-    dot: true
-  }).pipe(gulp.dest('dist'));
+  var app = gulp.src(['app/*'], {dot: true})
+    .pipe(gulp.dest('dist'));
 
-  var bower = gulp.src([
-    'bower_components/**/*'
-  ]).pipe(gulp.dest('dist/bower_components'));
+  var bower = gulp.src(['bower_components/**/*'])
+    .pipe(gulp.dest('dist/bower_components'));
 
-  var elements = gulp.src(['app/elements/**/*.html'])
+  var elements = gulp.src(['app/elements/**/*.html', '!app/elements/elements.html'])
     .pipe(gulp.dest('dist/elements'));
 
   var vulcanized = gulp.src(['app/elements/elements.html'])
@@ -155,6 +153,12 @@ gulp.task('vulcanize', function () {
       inlineCss: true,
       inlineScripts: true
     }))
+    .pipe(polyclean.cleanCss())
+    .pipe(polyclean.uglifyJs())
+    .pipe($.minifyHtml({
+      empty: true,
+      spare: true
+    }))
     .pipe(gulp.dest(DEST_DIR))
     .pipe($.size({title: 'vulcanize'}));
 });
@@ -167,12 +171,19 @@ gulp.task('precache', function (callback) {
   glob('{elements,scripts,styles}/**/*.*', {cwd: dir}, function(error, files) {
     if (error) {
       callback(error);
-    } else {
+    }
+    else
+    {
       files.push('index.html', './', 'bower_components/webcomponentsjs/webcomponents-lite.min.js');
       var filePath = path.join(dir, 'precache.json');
       fs.writeFile(filePath, JSON.stringify(files), callback);
     }
   });
+});
+
+gulp.task('deleteBowerComponents', function() {
+  return gulp.src(['dist/bower_components'])
+    .pipe(vinylPaths(del));
 });
 
 // Clean Output Directory
@@ -235,7 +246,8 @@ gulp.task('default', ['clean'], function (cb) {
     ['copy', 'styles'],
     'elements',
     ['jshint', 'images', 'fonts', 'html'],
-    'vulcanize', 'precache',
+    'vulcanize',
+    ['precache', 'deleteBowerComponents'],
     cb);
 });
 

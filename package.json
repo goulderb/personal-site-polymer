@@ -25,9 +25,11 @@
     "jshint-stylish": "^2.0.0",
     "merge-stream": "^0.1.7",
     "opn": "^1.0.0",
+    "polyclean": ">=1.0.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.0.2",
-    "vulcanize": ">= 1.4.2"
+    "vinyl-paths": "^1.0.0",
+    "vulcanize": ">=1.4.2"
   },
   "engines": {
     "node": ">=0.10.0"
