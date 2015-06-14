@@ -12,17 +12,13 @@
   </style>
   <template>
     <paper-menu id="menu" attr-for-selected="data-route" selected="[[route]]" on-iron-select="onMenuSelect">
-      <a href="/" data-route="home">
-        <page-menu-item icon="home">
-          Home
-        </page-menu-item>
-      </a>
+      <page-menu-item icon="home" data-route="home" path="/" on-tap="onMenuItemTap">
+        Home
+      </page-menu-item>
 
-      <a href="/projects" data-route="projects">
-        <page-menu-item id="projects" icon="cloud" data-route="projects" path="/projects">
-          Projects
-        </page-menu-item>
-      </a>
+      <page-menu-item id="projects" icon="cloud" data-route="projects" path="/projects" on-tap="onMenuItemTap">
+        Projects
+      </page-menu-item>
     </paper-menu>
   </template>
 </dom-module>
@@ -41,6 +37,14 @@
       if (drawerPanel && drawerPanel.narrow)
       {
         drawerPanel.closeDrawer();
+      }
+    },
+    onMenuItemTap: function(e) {
+      var path = e.currentTarget.attributes.path.value;
+
+      if (path && typeof path === "string" && path !== "")
+      {
+        page(path);
       }
     }
   });
