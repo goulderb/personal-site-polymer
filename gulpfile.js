@@ -98,10 +98,16 @@ gulp.task('copy', function () {
     .pipe($.rename('elements.vulcanized.html'))
     .pipe(gulp.dest('dist/elements'));
 
+  var swBootstrap = gulp.src(['bower_components/platinum-sw/bootstrap/*.js'])
+    .pipe(gulp.dest('dist/elements/bootstrap'));
+
+  var swToolbox = gulp.src(['bower_components/sw-toolbox/*.js'])
+    .pipe(gulp.dest('dist/sw-toolbox'));
+
   var staticContent = gulp.src(['app/static_content/*'])
     .pipe(gulp.dest('dist/static_content'));
 
-  return merge(app, bower, elements, vulcanized, staticContent)
+  return merge(app, bower, elements, vulcanized, swBootstrap, swToolbox, staticContent)
     .pipe($.size({title: 'copy'}));
 });
 
