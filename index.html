@@ -4,15 +4,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Brett A. Goulder</title>
-    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
-    <script src="bower_components/page.js/page.js"></script>
-    <link rel="import" href="layouts/site-layout.html">
+    <script src="/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <script src="/bower_components/page.js/page.js"></script>
+    <link rel="import" href="elements/layout-elements/layout-element.html">
 
     <script src="routing/page-routes.js"></script>
   </head>
   <body unresolved>
     <template is="dom-bind" id="application">
-      <site-layout route="[[route]]" params="[[params]]"></site-layout>
+      <layout-element route="[[route]]" params="[[params]]"></layout-element>
     </template>
   </body>
 </html>
