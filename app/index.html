@@ -26,20 +26,13 @@
       <layout-element route="[[route]]" params="[[params]]"></layout-element>
 
 
-      <paper-toast id="caching-complete"
-                   duration="6000"
-                   text="Caching complete! This app will work offline.">
+      <paper-toast id="caching-complete" duration="6000" text="Caching complete! This app will work offline.">
       </paper-toast>
 
-      <platinum-sw-register auto-register
-                            clients-claim
-                            skip-waiting
+      <platinum-sw-register auto-register clients-claim skip-waiting
                             on-service-worker-error="logServiceWorkerError"
-                            on-service-worker-updated="displayInstalledToast
                             on-service-worker-installed="displayInstalledToast">
-
-        <platinum-sw-cache default-cache-strategy="networkFirst"
-                           precache-file="precache.json">
+        <platinum-sw-cache default-cache-strategy="networkFirst" precache-file="precache.json">
         </platinum-sw-cache>
       </platinum-sw-register>
     </template>
