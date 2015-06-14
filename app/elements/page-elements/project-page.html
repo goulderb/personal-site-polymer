@@ -1,6 +1,6 @@
-<link rel="import" href="/bower_components/polymer/polymer.html">
-<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="/elements/project-elements/project-element.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../project-elements/project-element.html">
 
 <dom-module id="project-page">
   <template>
@@ -19,7 +19,7 @@
       },
       projectUrl: {
         type: String,
-        computed: 'getProjectUrl(params.name)'
+        computed: "getProjectUrl(params.name)"
       }
     },
     getProjectUrl: function (name) {

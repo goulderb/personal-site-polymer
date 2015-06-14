@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Brett A. Goulder</title>
+
+    <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js bower_components/page.js/page.js -->
+    <script src="bower_components/page.js/page.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/routing/page-routes.js -->
+    <script src="scripts/routing/page-routes.js"></script>
+    <!-- endbuild -->
+
+    <!-- will be replaced with elements/elements.vulcanized.html -->
+    <link rel="import" href="elements/elements.html">
+    <!-- endreplace -->
+  </head>
+  <body unresolved>
+    <template is="dom-bind" id="application">
+      <layout-element route="[[route]]" params="[[params]]"></layout-element>
+
+
+      <paper-toast id="caching-complete"
+                   duration="6000"
+                   text="Caching complete! This app will work offline.">
+      </paper-toast>
+
+      <platinum-sw-register auto-register
+                            clients-claim
+                            skip-waiting
+                            on-service-worker-error="logServiceWorkerError"
+                            on-service-worker-updated="displayInstalledToast
+                            on-service-worker-installed="displayInstalledToast">
+
+        <platinum-sw-cache default-cache-strategy="networkFirst"
+                           precache-file="precache.json">
+        </platinum-sw-cache>
+      </platinum-sw-register>
+    </template>
+
+    <!-- build:js scripts/index.js -->
+    <script src="scripts/index.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>

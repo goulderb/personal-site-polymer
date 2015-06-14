@@ -1,9 +1,9 @@
-<link rel="import" href="/bower_components/polymer/polymer.html">
-<link rel="import" href="/bower_components/paper-item/paper-item.html">
-<link rel="import" href="/bower_components/paper-item/paper-item-body.html">
-<link rel="import" href="/bower_components/paper-material/paper-material.html">
-<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="/bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item-body.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
 
 <dom-module id="project-element">
   <style>
@@ -166,7 +166,7 @@
         {
           avOutputDescription.push({
             line: avSplitDescription[i],
-            isNotLastLine: i != ivLastIndexOfSplitDescription
+            isNotLastLine: i !== ivLastIndexOfSplitDescription
           });
         }
 
@@ -183,7 +183,7 @@
     {
       if (elements)
       {
-        return elements.length != 0;
+        return elements.length !== 0;
       }
       
       return false;

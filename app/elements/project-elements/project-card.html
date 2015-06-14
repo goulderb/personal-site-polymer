@@ -1,6 +1,6 @@
-<link rel="import" href="/bower_components/polymer/polymer.html">
-<link rel="import" href="/bower_components/paper-material/paper-material.html">
-<link rel="import" href="/bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
 
 <dom-module id="project-card">
   <style>
@@ -43,7 +43,7 @@
 
 <script type="text/javascript">
   Polymer({
-    is: 'project-card',
+    is: "project-card",
     properties: {
       projectName: {
         type: String
@@ -53,7 +53,7 @@
       },
       projectUrl: {
         type: String,
-        computed: 'getProjectUrl(projectName)'
+        computed: "getProjectUrl(projectName)"
       }
     },
     getProjectUrl: function(projectName) {
