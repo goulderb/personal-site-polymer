@@ -247,7 +247,7 @@ gulp.task('default', ['clean'], function (cb) {
     'elements',
     ['jshint', 'images', 'fonts', 'html'],
     'vulcanize',
-    ['precache', 'deleteBowerComponents'],
+    'precache',
     cb);
 });
 
